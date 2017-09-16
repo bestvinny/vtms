@@ -7,7 +7,6 @@
      <link rel="stylesheet" type="text/css" href="{{asset('css/user.css')}}">
 
      <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
-     <script type="text/javascript" src="{{asset('js/js.js')}}"></script>
 </head>
 </head>
 <body>

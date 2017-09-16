@@ -8,22 +8,27 @@
                         </a>
                     </li>
                     <li>
-                        <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
+                        <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-1">
                             <span class="sidebar-icon"><i class="fa fa-wrench"></i></span>
                             <span class="sidebar-title">ADMINISTRATION</span>
                             <b class="caret"></b>
                         </a>
-                        <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
-                            <li><a href="#"><i class="fa fa-users"></i>Users</a></li>
-                            <li><a href="#"><i class="fa fa-car"></i>Vehicles</a></li>
+                        <ul id="submenu-1" class="panel-collapse collapse panel-switch" role="menu">
+                            <li><a href="{{ route('showusers') }}"><i class="fa fa-users"></i>Users</a></li>
+                            <li><a href="{{ route('viewvehicle') }}"><i class="fa fa-car"></i>Vehicle</a></li>
                         </ul>
                     </li>
-                  
-                  <li>
-                        <a href="#">
+
+                     <li>
+                        <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
                             <span class="sidebar-icon"><i class="fa fa-tasks"></i></span>
-                            <span class="sidebar-title">PENDING APPROVALS</span>
+                            <span class="sidebar-title">TASKS</span>
+                            <b class="caret"></b>
                         </a>
+                        <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
+                            <li><a href="{{ route('approve') }}"><i class="fa fa-users"></i>Approve</a></li>
+                            <li><a href="{{ route('assign') }}"><i class="fa fa-car"></i>Assign</a></li>
+                        </ul>
                     </li>
 
                     <li>

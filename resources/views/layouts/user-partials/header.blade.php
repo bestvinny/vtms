@@ -11,14 +11,6 @@
                         <a class="navbar-brand" href="#">VTMS</a>
                     </div>
                     <div id="navbar-collapse" class="collapse navbar-collapse">
-                        <form class="navbar-form navbar-left" role="search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                </span>
-                            </div>
-                        </form>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a id="flag" href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -34,7 +26,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="http://lorempixel.com/100/100/people/9/" class="img-responsive img-thumbnail img-circle"> Username <b class="fa fa-angle-down"></b></a>
+                                <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="http://lorempixel.com/100/100/people/9/" class="img-responsive img-thumbnail img-circle">Hello, {{ Auth::user()->firstname }} <b class="fa fa-angle-down"></b></a>
                                 <ul class="dropdown-menu dropdown-block" role="menu">
                                     <li><a href="#"><i class="fa fa-fw fa-pencil"></i>Edit Profile</a></li>
                                     <li><a href="#"><i class="fa fa-fw fa-key"></i>Change Password</a></li>
