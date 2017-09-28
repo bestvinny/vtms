@@ -6,68 +6,70 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-0">
             <div class="panel panel-default">
-
-
+             <div class="panel-heading"><h3>Transfer Vehicle</h3></div>
                 <div class="panel-body">
-                    <div>
 
+                        <form role="form" class="form-horizontal" method="post" action="">
 
-                    <!-- Transfer pop up form -->
-                                <!-- Large modal -->
-                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                    ×</button>
-                                                <h4 class="modal-title" id="myModalLabel">
-                                                    Transfer Vehicle</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-12" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
-                                                        <!-- Tab panes -->
-                                                        <div class="tab-content">
-                                                            <div class="tab-pane active" id="Login">
-                                                                <form role="form" class="form-horizontal">
-                                                                <div class="form-group">
-                                                                    <label for="email" class="col-sm-2 control-label">
-                                                                        Current Group</label>
-                                                                    <div class="col-sm-10">
-                                                                        <input type="email" class="form-control" id="email1" placeholder="Email" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                                                        Next Group</label>
-                                                                    <div class="col-sm-10">
-                                                                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-2">
-                                                                    </div>
-                                                                    <div class="col-sm-10">
-                                                                        <button type="submit" class="btn btn-primary btn-sm">
-                                                                            Submit</button>
-                                                                    </div>
-                                                                </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+                                <div class="form-group">
+                                    <label for="group_name" class="col-sm-3 control-label">
+                                        Model</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="model" value="{{ $vehicle->vehicle->model }}" disabled="true"/>
                                     </div>
                                 </div>
 
+                                 <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        Color</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control"  name="color" value="{{ $vehicle->vehicle->color }}" disabled="true"/>
+                                    </div>
+                                </div>
 
-  <!-- End of Transfer pop up form -->
+                                 <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        Registration Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="reg_no" value="{{ $vehicle->vehicle->reg_no }}" disabled="true"/>
+                                    </div>
+                                </div>
+   
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        Your Current Group</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="group_name" disabled="true" value="{{ $vehicle->group->group_name }}" />
+                                    </div>
+                                </div>
 
+                                 <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        Choose Next Group</label>
+                                    <div class="col-sm-9">
+                                    <select name="group_name">
+                                          <option value="0" disabled="true" selected="true">-Please Select-</option>
 
-                    </div>
+                                        @foreach($groups as $group)
+                                          <option>{{ $group->group_name }}</option>
+                                        @endforeach 
+                                    </select>
+                                    </div>
+                                </div>
+
+                               
+                                
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <button type="submit" class="btn btn-success">
+                                            Transfer</button>
+                                    </div>
+                                </div>
+                                </form>
                 </div>
             </div>
         </div>

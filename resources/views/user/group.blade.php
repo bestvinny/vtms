@@ -7,7 +7,7 @@
         <div class="col-md-10 col-md-offset-0">
             <div class="panel panel-default">
 
-              <div class="panel-heading"><h3>View vehicle</h3></div>
+              <div class="panel-heading"><h3>View Groups</h3></div>
                 <div class="panel-body">
 
                 @if(Session::has('message'))
@@ -15,27 +15,26 @@
                     @endif
                     <div>
 
-                   <h4>You are currently assigned the vehicle below:</h3>
+
                       <table class="table table-striped table-bordered">
                         <thead>
                           <tr>
-                            <th>Model</th>
-                            <th>Color</th>
-                            <th>Registration Number</th>
-                            <th>Action</th>
+                            <th></th>
+                            <th>Group Name</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
-
+                        
+                        @foreach($vehicles as $vehicle)
                           <tr>
-                            <td>{{ $vehicle->vehicle->model }}</td>
-                            <td>{{ $vehicle->vehicle->color }}</td>
-                            <td>{{ $vehicle->vehicle->reg_no }}</td>                               
+                            <td>{{ $vehicle->id }}</td>
+                            <td>{{ $vehicle->group_name }}</td>                              
                             <td>  
-                            <a href="{{ route('showtransfer',$vehicle->vehicle->id) }}" class="button btn btn-success">Transfer</a>
+                            <a href="{{ route('groupvehicle',$vehicle->id) }}" class="button btn btn-success">Check</a>
                             </td>
                           </tr>              
-
+                          @endforeach
                         </tbody>
                       </table>
 

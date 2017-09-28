@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Vehicle;
+use App\Group;
+
 
 class UserController extends Controller
 {
@@ -30,14 +32,21 @@ class UserController extends Controller
         return view('user.user');
     }
 
-    public function showvehicle()
-    {
-       // $vehicles = Vehicle::all();
-       // return view('user.vehicle',compact('vehicles'));
 
-        $vehicles = User::join('vehicles', 'vehicles.user_id', 'users.id')->get();
-        $vehicle = User::join('vehicles', 'vehicles.user_id', 'users.id')->first();
-        return view('user.vehicle',compact('vehicles','vehicle'));
+        public function showvehicle($vehicle_id)
+    {
+        $vehicle = User::where('vehicle_id',$vehicle_id)->first();
+        return view('user.vehicle',compact('vehicle'));
     }
+
+    public function showtransfer($vehicle_id)
+    {
+        $vehicle = User::where('vehicle_id',$vehicle_id)->first();
+        $groups = Group::where([ ['is_assigned',0],['is_approved',0] ])->get();
+        return view('user.transfer',compact('vehicle','groups'));
+    }
+
+     
+
 
 }

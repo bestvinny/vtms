@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'firstname','middlename','lastname','gender','phone_no','id_no','is_assigned','is_approved','email', 'password','vehicle_id', 'group_id'
     ];
 
     /**
@@ -30,6 +30,12 @@ class User extends Authenticatable
     
     public function vehicle()
   {
-    return $this->hasOne('Vehicle');
+    return $this->belongsTo('App\vehicle');
+  }
+
+
+  public function group()
+  {
+    return $this->belongsTo('App\Group');
   }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.user-main')
+@extends('layouts.admin-main')
 
 @section('content')
    
@@ -6,16 +6,12 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-0">
             <div class="panel panel-default">
-
-              <div class="panel-heading"><h3>View vehicle</h3></div>
+            <div class="panel-heading"><h3>Assign Vehicle</h3></div>
                 <div class="panel-body">
-
-                @if(Session::has('message'))
+                    <div>
+                    @if(Session::has('message'))
                         <h3 style="color: green;"> {{ Session::get('message') }} </h3>
                     @endif
-                    <div>
-
-                   <h4>You are currently assigned the vehicle below:</h3>
                       <table class="table table-striped table-bordered">
                         <thead>
                           <tr>
@@ -26,19 +22,19 @@
                           </tr>
                         </thead>
                         <tbody>
-
+                         @foreach($vehicles as $vehicle)
                           <tr>
-                            <td>{{ $vehicle->vehicle->model }}</td>
-                            <td>{{ $vehicle->vehicle->color }}</td>
-                            <td>{{ $vehicle->vehicle->reg_no }}</td>                               
+                            <td>{{ $vehicle->model }}</td>
+                            <td>{{ $vehicle->color }}</td>
+                            <td>{{ $vehicle->reg_no }}</td>
                             <td>  
-                            <a href="{{ route('showtransfer',$vehicle->vehicle->id) }}" class="button btn btn-success">Transfer</a>
+                            <a href="{{ route('assign',$vehicle->id) }}" class="button btn btn-success">Assign</a>
                             </td>
-                          </tr>              
+                          </tr>
+                          @endforeach
 
                         </tbody>
                       </table>
-
 
                     </div>
                 </div>

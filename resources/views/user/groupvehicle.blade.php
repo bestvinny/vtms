@@ -15,27 +15,24 @@
                     @endif
                     <div>
 
-                   <h4>You are currently assigned the vehicle below:</h3>
+
                       <table class="table table-striped table-bordered">
                         <thead>
                           <tr>
                             <th>Model</th>
                             <th>Color</th>
                             <th>Registration Number</th>
-                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-
+                        
+                        @foreach($groups as $group)
                           <tr>
-                            <td>{{ $vehicle->vehicle->model }}</td>
-                            <td>{{ $vehicle->vehicle->color }}</td>
-                            <td>{{ $vehicle->vehicle->reg_no }}</td>                               
-                            <td>  
-                            <a href="{{ route('showtransfer',$vehicle->vehicle->id) }}" class="button btn btn-success">Transfer</a>
-                            </td>
+                            <td>{{ $group->vehicle->model }}</td>
+                            <td>{{ $group->vehicle->color }}</td>
+                            <td>{{ $group->vehicle->reg_no }}</td>                               
                           </tr>              
-
+                          @endforeach
                         </tbody>
                       </table>
 

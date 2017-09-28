@@ -5,9 +5,9 @@
    <div class="container" style="margin-top:10px;>
     <div class="row">
         <div class="col-md-10 col-md-offset-0">
-            <div class="panel panel-default">
+            <div class="panel panel-default">        
 
-
+            <div class="panel-heading"><h3>Edit Vehicle</h3></div>
                 <div class="panel-body">
 
                         <form role="form" class="form-horizontal" method="post" action=" {{ route('updatevehicle',$vehicle->id) }} ">
@@ -16,7 +16,7 @@
                         {{ method_field('PUT') }}
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 <div class="form-group">
-                                    <label for="group_name" class="col-sm-3 control-label">
+                                    <label for="model" class="col-sm-3 control-label">
                                         Model</label>
                                     <div class="col-sm-9">
                                      <div style="color: red;">
@@ -60,7 +60,7 @@
                                     <div class="col-sm-3">
                                     </div>
                                     <div class="col-sm-9">
-                                        <button type="submit" class="btn btn-primary btn-sm">
+                                        <button type="submit" class="btn btn-success btn-sm">
                                             Update</button>
                                     </div>
                                 </div>

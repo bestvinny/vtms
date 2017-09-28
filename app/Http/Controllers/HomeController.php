@@ -22,9 +22,4 @@ class HomeController extends Controller
         return view('layouts.homepage');
     }
 
-    public function test()
-    {
-        return view('layouts.homepage2');
-    }
-
 }

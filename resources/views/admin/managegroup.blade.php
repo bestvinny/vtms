@@ -7,7 +7,7 @@
         <div class="col-md-10 col-md-offset-0">
             <div class="panel panel-default">
                  <div class="panel-heading">
-                   <h3>Manage Vehicle</h3>
+                   <h3>Manage Group</h3>
                  </div>
                     <div class="panel-body">
 
@@ -16,7 +16,7 @@
                     @endif
 
                     <div>
-                <a href=" {{ route('showaddvehicle') }} "><button class="button btn btn-primary pull-right" style="margin-bottom:5px;">Add new</button></a>
+                <a href=" {{ route('showaddgroup') }} "><button class="button btn btn-primary pull-right" style="margin-bottom:5px;">Add new</button></a>
 
                 <form class="navbar-form navbar-left" style="padding-left: 1px; role="search" action="{{ route('searchvehicle') }}" method="get">
                 {{ csrf_field() }}
@@ -32,23 +32,21 @@
                       <table class="table table-striped table-bordered">
                         <thead>
                           <tr>
-                            <th>Model</th>
-                            <th>Color</th>
-                            <th>Registration Number</th>
+                            <th>ID</th>
+                            <th>Group Name</th>
                             <th colspan="2">Actions</th>
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach($vehicles as $vehicle)
+                          @foreach($groups as $group)
                           <tr>
-                            <td>{{ $vehicle->model }}</td>
-                            <td>{{ $vehicle->color }}</td>
-                            <td>{{ $vehicle->reg_no }}</td>
+                            <td>{{ $group->id }}</td>
+                            <td>{{ $group->group_name }}</td>
                             <td>  
-                            <a href="{{ route('editvehicle',$vehicle->id) }}" class="button btn btn-success">Edit</a>
+                            <a href="{{ route('editgroup',$group->id) }}" class="button btn btn-success">Edit</a>
                             </td>
                             <td>                                 
-                              <form action=" {{ route('delete',$vehicle->id) }} " method="post">
+                              <form action=" {{ route('deletegroup',$group->id) }} " method="post">
                               {{ csrf_field() }}
                               {{ method_field('delete') }}
                               <input type="submit" class="button btn btn-danger" value="Delete">
