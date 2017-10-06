@@ -16,7 +16,7 @@
                         <ul id="submenu-1" class="panel-collapse collapse panel-switch" role="menu">
                             <li><a href="{{ route('showusers') }}"><i class="fa fa-users"></i>Users</a></li>
                             <li><a href="{{ route('viewvehicle') }}"><i class="fa fa-car"></i>Vehicles</a></li>
-                            <li><a href="{{ route('viewgroup') }}"><i class="fa fa-car"></i>Groups</a></li>
+                            <li><a href="{{ route('viewgroup') }}"><i class="fa fa-users"></i>Groups</a></li>
                         </ul>
                     </li>
 

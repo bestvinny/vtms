@@ -18,17 +18,21 @@
                             <th>Model</th>
                             <th>Color</th>
                             <th>Registration Number</th>
-                            <th>Action</th>
+                            <th colspan="2">Action</th>
                           </tr>
                         </thead>
                         <tbody>
+
                          @foreach($vehicles as $vehicle)
                           <tr>
                             <td>{{ $vehicle->model }}</td>
                             <td>{{ $vehicle->color }}</td>
                             <td>{{ $vehicle->reg_no }}</td>
                             <td>  
-                            <a href="{{ route('assign',$vehicle->id) }}" class="button btn btn-success">Assign</a>
+                              <a href="{{ route('assign', $vehicle->id) }}" class="button btn btn-success">Assign</a>
+                            </td>
+                            <td>
+                              <a href="{{ route('remove', $vehicle->id) }}" class="button btn btn-danger">Remove</a>
                             </td>
                           </tr>
                           @endforeach

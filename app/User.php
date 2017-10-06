@@ -30,7 +30,7 @@ class User extends Authenticatable
     
     public function vehicle()
   {
-    return $this->belongsTo('App\vehicle');
+    return $this->belongsTo('App\Vehicle');
   }
 
 

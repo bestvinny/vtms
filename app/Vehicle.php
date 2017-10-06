@@ -15,6 +15,6 @@ class Vehicle extends Model
 
     public function group()
     {
-        return $this->belongsTo('App\Group');
+        return $this->hasOne('App\Group');
     }
 }

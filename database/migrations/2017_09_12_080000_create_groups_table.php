@@ -15,6 +15,9 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('vehicle_id')->unsigned()->nullable();
+            $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('set null');
+            $table->integer('v_id')->unsigned()->nullable();
             $table->string('group_name')->unique();
             $table->integer('is_assigned');
             $table->integer('is_approved');

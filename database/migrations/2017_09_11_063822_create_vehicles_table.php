@@ -15,8 +15,6 @@ class CreateVehiclesTable extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('group_id')->unsigned();
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
             $table->string('model');
             $table->string('color');
             $table->string('reg_no')->unique();

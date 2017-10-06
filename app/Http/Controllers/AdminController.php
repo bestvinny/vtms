@@ -259,19 +259,43 @@ class AdminController extends Controller
     // Approve Vehicle
     public function showapprove()
     {
-        $groups = Group::where([ ['is_assigned',1],['is_approved',0] ])->get();
-            return view('admin.showapprove',compact('groups'));
+        $approves = Group::where([ ['is_assigned',1],['is_approved',0] ])->get();
+            return view('admin.showapprove',compact('approves'));
     }
 
-    public function approve()
+    public function approve($id)
     {
-        $emails = User::where([ ['is_assigned',1],['is_approved',0] ])->get();
+        $approve = Group::findOrFail($id);
+        return view('admin.approve',compact('approve'));
+    }
 
-        Mail::send('mail', $data_nomor, function ($m) use ($emails) {
-            $m->to($emails)->subject('Respond Reminder!');
-        });
+    public function approve_to(Request $request,$id)
+    {
+        $approve = Group::findOrFail($id);
+        $approve->vehicle_id = $approve->v_id;
+        $approve->v_id = $approve->v_id;
+        $approve->is_approved = 1;
+        $approve->save();
 
-        return view('admin.approve',compact('emails'));
+        //$approvemail = User::where($id);
+
+
+        return redirect('/admin/showapprove')->with('message','Vehicle approved successfully!');
+    }
+
+    public function reject($id)
+    {
+        $reject = Group::findOrFail($id);
+         return view('admin.reject',compact('reject'));
+    }
+
+    public function reject_to(Request $request,$id)
+    {
+        $reject = Group::where('id', $request->id)->first();
+        $reject->is_assigned = 0;
+        $reject->is_approved = 0;
+        $reject->save();
+        return redirect('/admin/showapprove')->with('message','Vehicle rejected!');
     }
 
     
@@ -279,7 +303,7 @@ class AdminController extends Controller
     public function showassign()
     {
         $vehicles = Vehicle::all();
-        return view('admin.showassign',compact('vehicles','groups'));
+        return view('admin.showassign',compact('vehicles'));
     }
 
     public function assign($id)
@@ -289,23 +313,45 @@ class AdminController extends Controller
         return view('admin.assign',compact('vehicle','groups'));
     }
 
-    public function assign_to(Request $request,$group_id)
+    public function assign_to(Request $request,$group_name)
     {
 
         $this->validate($request,[
-               'group_id'=>'Required'
+               'group_name'=>'Required'
             ]);
 
             $vehicle = Vehicle::all();
-            $groups = Group::all();
-            $user = User::where('group_id', $request->input('group_id'))->first();
-            $user->is_assigned = 1;
-            $user->is_approved = 1;
-            $user->vehicle_id = $request->id;
-            $user->group_id = $request->group_id;
-           
-         $user->save();
+            $groups = Group::where([ ['is_assigned',0],['is_approved',0] ])->get();
+            $assign = Group::where('group_name', $request->group_name)->first();
+            $assign->vehicle_id = $request->id;
+            $assign->v_id = $request->id;
+            $assign->is_assigned = 1;
+            $assign->is_approved = 1;
+            $assign->vehicle_id = $request->id; 
+            $assign->save();
         return redirect('/admin/showassign')->with('message','Vehicle assigned successfully!');
     }
+
+
+    public function remove($id)
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        return view('admin.remove',compact('vehicle'));
+    }
+
+
+     public function removed(Request $request,$id)
+    {
+
+            $remove = Group::where('id', $request->id)->first();
+            $remove->is_assigned = 0;
+            $remove->is_approved = 0;
+            $remove->vehicle_id = $request->id; 
+            $remove->save();
+        return redirect('/admin/showassign')->with('message','Vehicle assigned successfully!');
+    }
+
+
+
 
 }

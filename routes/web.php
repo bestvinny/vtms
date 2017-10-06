@@ -19,8 +19,10 @@ Auth::routes();
 // Routes to display user pages after logged in
 Route::prefix('user')->group(function(){
 	Route::get('/', 'UserController@user')->name('user');
-    Route::get('/vehicle/{group_name}', 'UserController@showvehicle')->name('showvehicle');
+    Route::get('/vehicle', 'UserController@novehicle')->name('novehicle');
+    Route::get('/vehicle/{id}', 'UserController@showvehicle')->name('showvehicle');
     Route::get('/vehicle/transfer/{id}', 'UserController@showtransfer')->name('showtransfer');
+    Route::put('/vehicle/transfered/{id}', 'UserController@transfer')->name('transfer');
 
 	Route::get('/group', 'UserController@showgroup')->name('showgroup');
 	Route::get('/group/groupvehicle/{group_name}', 'UserController@groupvehicle')->name('groupvehicle');
@@ -40,9 +42,16 @@ Route::prefix('admin')->group(function(){
     Route::get('/', 'AdminController@index')->name('admin.panel');
 
     Route::get('/showapprove', 'AdminController@showapprove')->name('showapprove');
+    Route::get('/approve/{id}', 'AdminController@approve')->name('approve');
+    Route::put('/approve_to/{id}', 'AdminController@approve_to')->name('approve_to');
+    Route::get('/reject/{id}', 'AdminController@reject')->name('reject');
+    Route::put('/reject_to/{id}', 'AdminController@reject_to')->name('reject_to');
+
     Route::get('/showassign', 'AdminController@showassign')->name('showassign');
     Route::get('/assign/{id}', 'AdminController@assign')->name('assign');
     Route::put('/assign_to/{id}', 'AdminController@assign_to')->name('assign_to');
+    Route::get('/remove/{id}', 'AdminController@remove')->name('remove');
+    Route::put('/removed/{id}', 'AdminController@removed')->name('removed');
 
 
     // Manage users routes

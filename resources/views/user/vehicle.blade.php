@@ -28,11 +28,11 @@
                         <tbody>
 
                           <tr>
-                            <td>{{ $vehicle->vehicle->model }}</td>
-                            <td>{{ $vehicle->vehicle->color }}</td>
-                            <td>{{ $vehicle->vehicle->reg_no }}</td>                               
+                            <td>{{ $vehicle->model }}</td>
+                            <td>{{ $vehicle->color }}</td>
+                            <td>{{ $vehicle->reg_no }}</td>                               
                             <td>  
-                            <a href="{{ route('showtransfer',$vehicle->vehicle->id) }}" class="button btn btn-success">Transfer</a>
+                            <a href="{{ route('showtransfer',$vehicle->id) }}" class="button btn btn-success">Transfer</a>
                             </td>
                           </tr>              
 

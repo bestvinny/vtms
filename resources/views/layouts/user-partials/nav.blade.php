@@ -14,7 +14,7 @@
                             <b class="caret"></b>
                         </a>
                         <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
-                            <li><a href="{{ route('showvehicle',Auth::user()->vehicle_id) }}"><i class="fa fa-caret-right"></i>Vehicle</a></li>
+                            <li><a href="{{ route('showvehicle',Auth::user()->group->vehicle_id) }}"><i class="fa fa-caret-right"></i>Vehicle</a></li>
                             <li><a href="{{ route('showgroup') }}"><i class="fa fa-caret-right"></i>Groups</a></li>
                         </ul>
                     </li>

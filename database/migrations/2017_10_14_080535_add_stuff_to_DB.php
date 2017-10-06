@@ -23,31 +23,6 @@ class AddStuffToDB extends Migration
         );
 
 
-        // Insert some Group
-        DB::table('groups')->insert(
-            array(
-                'group_name' => 'Comics',
-                'is_assigned' => '0',
-                'is_approved' => '0'
-            )
-        );
-
-        DB::table('groups')->insert(
-            array(
-                'group_name' => 'HR',
-                'is_assigned' => '0',
-                'is_approved' => '0'
-            )
-        );
-
-        DB::table('groups')->insert(
-            array(
-                'group_name' => 'IT',
-                'is_assigned' => '0',
-                'is_approved' => '0'
-            )
-        );
-
         // Insert some vehicle
         DB::table('vehicles')->insert(
             array(
@@ -55,8 +30,7 @@ class AddStuffToDB extends Migration
                 'color' => 'Blue',
                 'reg_no' => 'KKK 012 K',
                 'description' => 'Best Car',
-                'is_used' => '0',
-                'group_id' => '2'
+                'is_used' => '0'
             )
         );
 
@@ -66,10 +40,41 @@ class AddStuffToDB extends Migration
                 'color' => 'Grey',
                 'reg_no' => 'KMM 111 M',
                 'description' => 'Good Car',
-                'is_used' => '0',
-                'group_id' => '1'
+                'is_used' => '0'
             )
         );
+
+        // Insert some Group
+        DB::table('groups')->insert(
+            array(
+                'vehicle_id' => '2',
+                'v_id' => '2',
+                'group_name' => 'Comics',
+                'is_assigned' => '0',
+                'is_approved' => '0'
+            )
+        );
+
+        DB::table('groups')->insert(
+            array(
+                'vehicle_id' => null,
+                'v_id' => null,
+                'group_name' => 'HR',
+                'is_assigned' => '0',
+                'is_approved' => '0'
+            )
+        );
+
+        DB::table('groups')->insert(
+            array(
+                'vehicle_id' => '1',
+                'v_id' => '1',
+                'group_name' => 'IT',
+                'is_assigned' => '0',
+                'is_approved' => '0'
+            )
+        );
+
 
 
 
@@ -85,7 +90,6 @@ class AddStuffToDB extends Migration
                 'dob' => '1975',
                 'email' => 'user@mail.com',
                 'password' => bcrypt('user12'),
-                'vehicle_id' => '1',
                 'group_id' => '1'
             )
         );
@@ -101,7 +105,6 @@ class AddStuffToDB extends Migration
                 'dob' => '1988',
                 'email' => 'sean@mail.com',
                 'password' => bcrypt('sean12'),
-                'vehicle_id' => '1',
                 'group_id' => '1'
             )
         );
@@ -117,7 +120,6 @@ class AddStuffToDB extends Migration
                 'dob' => '1970',
                 'email' => 'jane@mail.com',
                 'password' => bcrypt('jane12'),
-                'vehicle_id' => '2',
                 'group_id' => '2'
             )
         );
@@ -133,7 +135,6 @@ class AddStuffToDB extends Migration
                 'dob' => '1993',
                 'email' => 'rita@mail.com',
                 'password' => bcrypt('rita12'),
-                'vehicle_id' => '2',
                 'group_id' => '2'
             )
         );
@@ -149,7 +150,6 @@ class AddStuffToDB extends Migration
                 'dob' => '1964',
                 'email' => 'bill@mail.com',
                 'password' => bcrypt('bill12'),
-                'vehicle_id' => '1',
                 'group_id' => '3'
             )
         );
@@ -165,7 +165,6 @@ class AddStuffToDB extends Migration
                 'dob' => '1940',
                 'email' => 'denis@mail.com',
                 'password' => bcrypt('denis12'),
-                'vehicle_id' => '1',
                 'group_id' => '3'
             )
         );

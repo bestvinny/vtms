@@ -9,7 +9,7 @@
              <div class="panel-heading"><h3>Transfer Vehicle</h3></div>
                 <div class="panel-body">
 
-                        <form role="form" class="form-horizontal" method="post" action="">
+                        <form role="form" class="form-horizontal" method="post" action="{{ route('transfer',$vehicle->id) }}">
 
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
@@ -17,7 +17,7 @@
                                     <label for="group_name" class="col-sm-3 control-label">
                                         Model</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="model" value="{{ $vehicle->vehicle->model }}" disabled="true"/>
+                                        <input type="text" class="form-control" name="model" value="{{ $vehicle->model }}" disabled="true"/>
                                     </div>
                                 </div>
 
@@ -25,7 +25,7 @@
                                     <label class="col-sm-3 control-label">
                                         Color</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control"  name="color" value="{{ $vehicle->vehicle->color }}" disabled="true"/>
+                                        <input type="text" class="form-control"  name="color" value="{{ $vehicle->color }}" disabled="true"/>
                                     </div>
                                 </div>
 
@@ -33,7 +33,7 @@
                                     <label class="col-sm-3 control-label">
                                         Registration Number</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="reg_no" value="{{ $vehicle->vehicle->reg_no }}" disabled="true"/>
+                                        <input type="text" class="form-control" name="reg_no" value="{{ $vehicle->reg_no }}" disabled="true"/>
                                     </div>
                                 </div>
    
@@ -41,17 +41,19 @@
                                     <label class="col-sm-3 control-label">
                                         Your Current Group</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="group_name" disabled="true" value="{{ $vehicle->group->group_name }}" />
+                                        <input type="text" class="form-control" name="group_name" disabled="true" value="{{ Auth::user()->group->group_name }}" />
                                     </div>
                                 </div>
 
                                  <div class="form-group">
                                     <label class="col-sm-3 control-label">
                                         Choose Next Group</label>
+                                        <div style="color: red;">
+                                         {!! $errors->has('group_name')?$errors->first('group_name'):'' !!}
+                                        </div>
                                     <div class="col-sm-9">
                                     <select name="group_name">
                                           <option value="0" disabled="true" selected="true">-Please Select-</option>
-
                                         @foreach($groups as $group)
                                           <option>{{ $group->group_name }}</option>
                                         @endforeach 

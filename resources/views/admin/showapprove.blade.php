@@ -8,6 +8,10 @@
             <div class="panel panel-default">
             <div class="panel-heading"><h3>Approve Vehicle</h3></div>
                 <div class="panel-body">
+
+                  @if(Session::has('message'))
+                        <h3 style="color: green;"> {{ Session::get('message') }} </h3>
+                    @endif
                     <div>
                     
                       <table class="table table-striped table-bordered">
@@ -19,15 +23,15 @@
                           </tr>
                         </thead>
                         <tbody>
-                        @foreach($groups as $group)
+                        @foreach($approves as $approve)
                           <tr>
-                            <td>{{ $group->id }}</td>
-                            <td>{{ $group->group_name }}</td>
+                            <td>{{ $approve->id }}</td>
+                            <td>{{ $approve->group_name }}</td>
                             <td>  
-                             <a href="" class="button btn btn-success">Approve</a>
+                             <a href="{{ route('approve',$approve->id) }}" class="button btn btn-success">Approve</a>
                             </td>
                             <td>                                 
-                             <a href="" class="button btn btn-danger">Reject</a>
+                             <a href="{{ route('reject',$approve->id) }}" class="button btn btn-danger">Reject</a>
                             </td>        
                           </tr>
                           @endforeach

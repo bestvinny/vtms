@@ -6,10 +6,10 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-0">
             <div class="panel panel-default">
-             <div class="panel-heading"><h3>Approve Vehicle</h3></div>
+             <div class="panel-heading"><h3>Reject Vehicle</h3></div>
                 <div class="panel-body">
 
-                        <form role="form" class="form-horizontal" method="post" action=" {{ route('approve_to',$approve->id) }} ">
+                        <form role="form" class="form-horizontal" method="post" action=" {{ route('reject_to',$reject->id) }} ">
 
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
@@ -19,7 +19,7 @@
                                     <label class="col-sm-3 control-label">
                                         Group Name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="group_name" value="{{ $approve->group_name }}" disabled="true"/>
+                                        <input type="text" class="form-control" name="group_name" value="{{ $reject->group_name }}" disabled="true"/>
                                     </div>
                                 </div>
         
@@ -28,8 +28,8 @@
                                     <div class="col-sm-3">
                                     </div>
                                     <div class="col-sm-9">
-                                        <button type="submit" class="btn btn-success">
-                                            Approve</button>
+                                        <button type="submit" class="btn btn-danger">
+                                            Reject</button>
                                     </div>
                                 </div>
                                 </form>
